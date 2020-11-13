@@ -1,4 +1,4 @@
-package com.skilldistillery.workout.entities.Workout;
+package com.skilldistillery.workout.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
