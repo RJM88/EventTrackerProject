@@ -61,7 +61,7 @@ public class WorkoutController {
 			response.setStatus(400);
 		}
 	}
-	
+
 	@PutMapping("workouts/{id}")
 	public Workout updateWorkout(@PathVariable Integer id, @RequestBody Workout workout, HttpServletResponse response) {
 		try {
@@ -75,5 +75,12 @@ public class WorkoutController {
 			workout = null;
 		}
 		return workout;
+	}
+
+	@GetMapping("workouts/search/{keyword}")
+	public List<Workout> findByNameLikeOrDiscriptionLike(@PathVariable String keyword, HttpServletResponse response,
+			HttpServletRequest request) {
+		List<Workout> workouts = svc.findByNameLikeOrDiscriptionLike(keyword);
+		return workouts;
 	}
 }

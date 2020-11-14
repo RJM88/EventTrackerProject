@@ -14,6 +14,9 @@ public interface WorkoutService {
 	boolean deleteWorkouts(Integer id);
 	
 	Workout update(Integer id, Workout workout);
+	
+	List<Workout> findByNameLikeOrDiscriptionLike(String keyword);
+
 
 
 

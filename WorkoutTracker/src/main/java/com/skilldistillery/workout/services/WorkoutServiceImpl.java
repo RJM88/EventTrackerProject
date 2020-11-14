@@ -71,4 +71,10 @@ public class WorkoutServiceImpl implements WorkoutService {
 		repo.flush();
 		return managedWorkout;
 	}
+
+	@Override
+	public List<Workout> findByNameLikeOrDiscriptionLike(String keyword) {
+		keyword = "%" + keyword + "%";
+		return repo.findByNameLikeOrDiscriptionLike(keyword, keyword);
+	}
 }
