@@ -42,7 +42,7 @@ class WorkoutTest {
 	@Test
 	void test_Workout_Mapping() {
 		assertNotNull(workout);
-		assertEquals("Monday", workout.getName());
+		assertEquals("Dead Lift", workout.getName());
 	}
 
 }
