@@ -35,9 +35,19 @@ public class WorkoutController {
 		return svc.getAllWorkouts();
 	}
 
+	@GetMapping("workouts/{id}")
+	public Workout findById(@PathVariable Integer id, HttpServletResponse response) {
+		Workout workout = svc.findById(id);
+		if (workout == null) {
+			response.setStatus(404);
+		}
+		return workout;
+	}
+
 	@PostMapping("workouts")
 	public Workout addWorkout(@RequestBody Workout workout, HttpServletResponse response, HttpServletRequest request) {
 		workout = svc.addWorkout(workout);
+
 		if (workout == null) {
 			response.setStatus(404);
 		} else {
@@ -52,11 +62,13 @@ public class WorkoutController {
 	@DeleteMapping("workouts/{id}")
 	public void deleteWorkouts(@PathVariable Integer id, HttpServletResponse response, HttpServletRequest request) {
 		try {
+
 			if (svc.deleteWorkouts(id)) {
 				response.setStatus(204);
 			} else {
 				response.setStatus(404);
 			}
+
 		} catch (Exception e) {
 			response.setStatus(400);
 		}
@@ -66,6 +78,7 @@ public class WorkoutController {
 	public Workout updateWorkout(@PathVariable Integer id, @RequestBody Workout workout, HttpServletResponse response) {
 		try {
 			workout = svc.update(id, workout);
+
 			if (workout == null) {
 				response.setStatus(404);
 				workout = null;
@@ -78,9 +91,17 @@ public class WorkoutController {
 	}
 
 	@GetMapping("workouts/search/{keyword}")
-	public List<Workout> findByNameLikeOrDiscriptionLike(@PathVariable String keyword, HttpServletResponse response,
-			HttpServletRequest request) {
-		List<Workout> workouts = svc.findByNameLikeOrDiscriptionLike(keyword);
+	public List<Workout> findByNameLikeOrDescriptionLikeOrDayLike(@PathVariable String keyword,
+			HttpServletResponse response, HttpServletRequest request) {
+		List<Workout> workouts = svc.findByNameLikeOrDescriptionLikeOrDayLike(keyword);
 		return workouts;
 	}
+
+	@GetMapping("workouts/search")
+	public List<Workout> findByDateLike(@RequestBody String keyword, HttpServletResponse response,
+			HttpServletRequest request) {
+		List<Workout> workouts = svc.findByDateLike(keyword);
+		return workouts;
+	}
+
 }

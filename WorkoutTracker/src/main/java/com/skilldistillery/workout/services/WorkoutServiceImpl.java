@@ -31,8 +31,10 @@ public class WorkoutServiceImpl implements WorkoutService {
 	public boolean deleteWorkouts(Integer id) {
 		boolean deleted = false;
 		Optional<Workout> workoutOpt = repo.findById(id);
+
 		if (workoutOpt.isPresent()) {
 			Workout workout = workoutOpt.get();
+
 			if (workout.getId() == id) {
 				repo.deleteById(id);
 				deleted = true;
@@ -46,23 +48,30 @@ public class WorkoutServiceImpl implements WorkoutService {
 	public Workout update(Integer id, Workout workout) {
 		Optional<Workout> workoutOpt = repo.findById(id);
 		Workout managedWorkout = null;
+
 		if (workoutOpt.isPresent()) {
 			managedWorkout = workoutOpt.get();
+
 			if (workout.getName() != null) {
 				managedWorkout.setName(workout.getName());
 			}
+
 			if (workout.getDay() != null) {
 				managedWorkout.setDay(workout.getDay());
 			}
-			if (workout.getDiscription() != null) {
-				managedWorkout.setDiscription(workout.getDiscription());
+
+			if (workout.getDescription() != null) {
+				managedWorkout.setDescription(workout.getDescription());
 			}
+
 			if (workout.getImg() != null) {
 				managedWorkout.setImg(workout.getImg());
 			}
+
 			if (workout.getLocation() != null) {
 				managedWorkout.setLocation(workout.getLocation());
 			}
+
 			if (workout.getWeight() != null) {
 				managedWorkout.setWeight(workout.getWeight());
 			}
@@ -73,8 +82,24 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 
 	@Override
-	public List<Workout> findByNameLikeOrDiscriptionLike(String keyword) {
+	public List<Workout> findByNameLikeOrDescriptionLikeOrDayLike(String keyword) {
 		keyword = "%" + keyword + "%";
-		return repo.findByNameLikeOrDiscriptionLike(keyword, keyword);
+		return repo.findByNameLikeOrDescriptionLikeOrDayLike(keyword, keyword, keyword);
+	}
+
+	@Override
+	public List<Workout> findByDateLike(String keyword) {
+		keyword = "%" + keyword + "%";
+		return repo.findByDateLike(keyword);
+	}
+
+	@Override
+	public Workout findById(Integer id) {
+		Optional<Workout> workoutOpt = repo.findById(id);
+		Workout workout = null;
+		if (workoutOpt.isPresent()) {
+			workout = workoutOpt.get();
+		}
+		return workout;
 	}
 }

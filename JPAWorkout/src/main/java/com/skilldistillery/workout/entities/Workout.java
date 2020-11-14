@@ -13,13 +13,15 @@ public class Workout {
 
 	private String name;
 
-	private String discription;
+	private String description;
 
 	private String location;
 
-	private int enabled;
+	private boolean enabled;
 
 	private String day;
+
+	private String date;
 
 	private String img;
 
@@ -29,15 +31,16 @@ public class Workout {
 		super();
 	}
 
-	public Workout(int id, String name, String discription, String location, int enabled, String day, String img,
-			String weight) {
+	public Workout(int id, String name, String description, String location, boolean enabled, String day, String date,
+			String img, String weight) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.discription = discription;
+		this.description = description;
 		this.location = location;
 		this.enabled = enabled;
 		this.day = day;
+		this.date = date;
 		this.img = img;
 		this.weight = weight;
 	}
@@ -58,12 +61,12 @@ public class Workout {
 		this.name = name;
 	}
 
-	public String getDiscription() {
-		return discription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getLocation() {
@@ -74,11 +77,11 @@ public class Workout {
 		this.location = location;
 	}
 
-	public int getEnabled() {
+	public boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(int enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
@@ -104,6 +107,14 @@ public class Workout {
 
 	public void setWeight(String weight) {
 		this.weight = weight;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	@Override
@@ -134,10 +145,10 @@ public class Workout {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Workout [id=").append(id).append(", name=").append(name).append(", discription=")
-				.append(discription).append(", location=").append(location).append(", enabled=").append(enabled)
-				.append(", day=").append(day).append(", img=").append(img).append(", weight=").append(weight)
-				.append("]");
+		builder.append("Workout [id=").append(id).append(", name=").append(name).append(", description=")
+				.append(description).append(", location=").append(location).append(", enabled=").append(enabled)
+				.append(", day=").append(day).append(", date=").append(date).append(", img=").append(img)
+				.append(", weight=").append(weight).append("]");
 		return builder.toString();
 	}
 
