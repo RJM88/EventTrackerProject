@@ -3,7 +3,7 @@
 
 ### *Overview*
 
-The app will allow the user to track information about their workouts. 
+The app will allow the user to track information about their workouts.
 
 For example:
 * Name:  Squats
@@ -11,14 +11,14 @@ For example:
 * Day:  Monday
 * Date:  11/09/2020
 * Location:  24 Hour Fitness
-* Description:  Lift felt to easy. Need to raise the weight next time.
-	
+* Description:  The lift felt to easy. Need to raise the weight next time.
+
 
 This project involved creating a database with a few entries.
 Creating a Java entity class and mapping the POJO using JPA.
 Configuring a Spring Boot app to publish a REST API.
-Use Spring REST annotations.
-The user will beable to perform full CRUD operations. 
+Using Spring REST annotations.
+The user will be able to perform full CRUD operations.
 * Create a new workout
 * Read a list of past workouts or search by ID/Name/Description/Day/Date
 * Update any of the workouts
@@ -44,14 +44,14 @@ Send and receive JSON.
 ```
   {
         "name": "New Lift",
-        "description": "3 Sets of 10 Reps. Was feeling a little light.",
+        "description": Was feeling a little light. Need to increase the weight",
         "location": A few hours of fitness,
         "day": "Monday",
         "Date": "11/09/2020s",
         "img": null,
-        "weight": "Set 1 - 200lb, Set 2 - 220lb, Set 3 - 230lb"
+        "weight": "Set 1/10 reps - 200lb, Set 2/10 reps - 220lb, Set 3/10 reps - 230lb"
     }
-    
+
     Search by date
     11/10/2020
 ```
@@ -73,12 +73,12 @@ Send and receive JSON.
 * RESTful API
 * Spring Boot
 * Spring Data JPA
-* Spring Tool Suite 
+* Spring Tool Suite
 
 
 #### *Lessons Learned*
 Had the opportunity to become more comfortable with RESTful API.  
-Learned important annotations like: 
+Learned important annotations like:
 * @Service
 * @RequestMapping
 * @RestController
