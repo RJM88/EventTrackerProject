@@ -28,16 +28,17 @@ Send and receive JSON.
 
 #### *API Endpoints*
 
+http://localhost:8085/
 
-| Return Type       | Route                                                       | Functionality                           |
-| ----------------- | ----------------------------------------------------------- | --------------------------------------- |
-| List <Workout> 	  | GET http://localhost:8085/api/workouts                    	| Gets all workouts                     	|
-| Workout       	  | GET http://localhost:8085/api/workouts/{id}            	    | Gets one workout by id                	|
-| List <Workout> 	  | GET http://localhost:8085/api/workouts/search             	| Gets workouts by date                 	|
-| List <Workout> 	  | GET http://localhost:8085/api/workouts/search/{keyword}   	| Gets workouts by day/name/description 	|
-| Workout         	| PUT http://localhost:8085/api/workouts/{id}               	| Update a workout                      	|
-| Workout         	| POST http://localhost:8085/api/workouts                   	| Add a workout                         	|
-| Void            	| Delete http://localhost:8085/api/workouts/{id}            	| Delete a workout                      	|
+| Return Type       | Route                                 | Functionality                           |
+| ----------------- | ------------------------------------- | --------------------------------------- |
+| List<Workout> 	  | GET api/workouts                    	| Gets all workouts                     	|
+| Workout       	  | GET api/workouts/{id}            	    | Gets one workout by id                	|
+| List<Workout> 	  | GET api/workouts/search             	| Gets workouts by date                 	|
+| List<Workout> 	  | GET api/workouts/search/{keyword}   	| Gets workouts by day/name/description 	|
+| Workout         	| PUT api/workouts/{id}               	| Update a workout                      	|
+| Workout         	| POST api/workouts                   	| Add a workout                         	|
+| Void            	| Delete api/workouts/{id}            	| Delete a workout                      	|
 
 #### *Formatting for Posts, Search by date*
 
