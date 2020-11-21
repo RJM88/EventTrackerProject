@@ -7,5 +7,35 @@
   </head>
   <body>
     <h1>Workout Tracker</h1>
+
+    <form name="workoutForm">
+      <input type="number" name="workoutId" />
+      <button name="lookup">Get Workout by Id</button>
+    </form>
+
+    <form name="workoutSearchForm">
+      <input type="text" name="workoutKeyword" />
+      <button name="search">Get Workout by keyword</button>
+    </form>
+
+    <br />
+    <br />
+    <div id="output">
+      <div id="workoutData"></div>
+    </div>
+    <hr />
+
+    <form name="addWorkoutForm">
+		<input type="text" name="workoutName" placeholder="Name of Workout"><br>
+		<input type="text" name="workoutDescription" placeholder="Description"><br>
+		<input type="text" name="workoutLocation" placeholder="Location"><br>
+		<input type="text" name="workoutDay" placeholder="Day of Week"><br>
+		<input type="text" name="workoutDate" placeholder="Date"><br>
+		<input type="text" name="workoutWeight" placeholder="SETS REPS AND WEIGHT"><br>
+		<input type="text" name="workoutImg" placeholder="Photo of Workout"><br>
+<br>
+
+		<button name="addWorkout">Add Workout</button>
+	</form>
   </body>
 </html>
