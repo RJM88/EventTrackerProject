@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Workout {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	private String name;
 
@@ -31,7 +31,7 @@ public class Workout {
 		super();
 	}
 
-	public Workout(int id, String name, String description, String location, boolean enabled, String day, String date,
+	public Workout(Integer id, String name, String description, String location, boolean enabled, String day, String date,
 			String img, String weight) {
 		super();
 		this.id = id;
@@ -45,11 +45,11 @@ public class Workout {
 		this.weight = weight;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
