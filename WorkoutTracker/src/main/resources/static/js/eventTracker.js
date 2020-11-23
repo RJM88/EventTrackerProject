@@ -25,6 +25,7 @@ function init() {
       newWorkout.img = document.addWorkoutForm.workoutImg.value;
       newWorkout.enabled = 1;
       console.log(newWorkout);
+      window.location = window.location
       postWorkout(newWorkout);
     }
   );
@@ -75,7 +76,6 @@ function workoutTable(workouts) {
     td3.textContent = workouts[i].date;
     tr.addEventListener("click", function (event) {
       event.preventDefault();
-
       getWorkout(workouts[i].id);
     });
 
@@ -349,6 +349,7 @@ function displayWorkout(workout) {
       newUpdatedWorkout.img = updatedWorkoutForm.workoutImg.value;
       newUpdatedWorkout.enabled = 1;
       console.log(newUpdatedWorkout);
+      window.location = window.location
     updateWorkout(newUpdatedWorkout);
   });
   dataDiv.appendChild(updatedWorkoutForm);
@@ -358,7 +359,8 @@ function displayWorkout(workout) {
   deleteButton.innerHTML = "Delete";
   dataDiv.appendChild(deleteButton);
   deleteButton.addEventListener("click", function () {
-    deleteWorkout(workout);
+    window.location = window.location
+    deleteWorkout(workout.id);
   });
   dataDiv.appendChild(deleteButton);
 }
@@ -374,6 +376,7 @@ function updateWorkout(workout) {
         newUpdatedWorkout = JSON.parse(xhr.responseText);
         console.log(xhr.responseText);
         displayWorkout(newUpdatedWorkout);
+        window.location = window.location
       }
     }
   };
