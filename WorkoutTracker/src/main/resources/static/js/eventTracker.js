@@ -11,6 +11,14 @@ function init() {
     getSearchedWorkout(keyword);
   });
 
+//   document.workoutDateSearchForm.search.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     var workoutDate = {
+//         date: document.workoutDateSearchForm.workoutDateSearch.value
+//     };
+//     getSearchedWorkoutByDate(workoutDate);
+//   });
+
   document.addWorkoutForm.addWorkout.addEventListener(
     "click",
     function (event) {
@@ -226,7 +234,53 @@ function getSearchedWorkout(keyword) {
   xhr.send();
 }
 
-function postWorkout(workout) {
+// function getSearchedWorkoutByDate(workoutDate) {
+//     console.log("getSearchedWorkout(): Keyword=" + workoutDate);
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("GET", "api/workouts/search/");
+//     xhr.setRequestHeader("Content-type", "application/json");
+//     xhr.onreadystatechange = function () {
+//       if (xhr.readyState === 4) {
+//         if (xhr.status === 201) {
+//           let workouts = JSON.parse(xhr.responseText);
+//           console.log(xhr.responseText);
+//           console.log(workouts);
+//           workoutTableByKeyword(workouts);
+//         } else {
+//           console.error("Wokrout not found.");
+//           displayError("Workout not found.");
+//         }
+//       }
+//     };
+
+//  workouts = JSON.stringify(workoutDate);
+//     console.log(workouts);
+//     xhr.send(workouts);
+//   }
+
+
+function updateWorkout(workout) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("PUT", "api/workouts/" + workout.id);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 201) {
+          let newUpdatedWorkout = "";
+          newUpdatedWorkout = JSON.parse(xhr.responseText);
+          console.log(xhr.responseText);
+          displayWorkout(newUpdatedWorkout);
+          window.location = window.location
+        }
+      }
+    };
+
+
+    newUpdatedWorkout = JSON.stringify(workout);
+    xhr.send(newUpdatedWorkout);
+    console.log(workout.name);
+    console.log(newUpdatedWorkout);
+  }function postWorkout(workout) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "api/workouts");
   xhr.setRequestHeader("Content-type", "application/json");
@@ -283,11 +337,11 @@ function displayWorkout(workout) {
 
   var updatedWorkoutForm = document.createElement("form");
 
-  var workoutId = document.createElement("input");
-  workoutId.name = "id";
-  workoutId.type = "text";
-  workoutId.value = workout.id;
-  updatedWorkoutForm.appendChild(workoutId);
+//   var workoutId = document.createElement("input");
+//   workoutId.name = "id";
+//   workoutId.type = "text";
+//   workoutId.value = workout.id;
+//   updatedWorkoutForm.appendChild(workoutId);
 
   var workoutName = document.createElement("input");
   workoutName.id = "name";
@@ -365,23 +419,4 @@ function displayWorkout(workout) {
   dataDiv.appendChild(deleteButton);
 }
 
-function updateWorkout(workout) {
-  let xhr = new XMLHttpRequest();
-  xhr.open("PUT", "api/workouts/" + workout.id);
-  xhr.setRequestHeader("Content-type", "application/json");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 201) {
-        let newUpdatedWorkout = "";
-        newUpdatedWorkout = JSON.parse(xhr.responseText);
-        console.log(xhr.responseText);
-        displayWorkout(newUpdatedWorkout);
-        window.location = window.location
-      }
-    }
-  };
-  newUpdatedWorkout = JSON.stringify(workout);
-  xhr.send(newUpdatedWorkout);
-  console.log(workout.name);
-  console.log(newUpdatedWorkout);
-}
+

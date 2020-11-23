@@ -1,5 +1,5 @@
 # EventTrackerProject
-##### Week 12 - Homework Project Skill Distillery
+##### Week 12/13 - Homework Project Skill Distillery
 
 ### *Overview*
 
@@ -25,10 +25,12 @@ The user will be able to perform full CRUD operations.
 * Delete any past workouts
 
 Send and receive JSON.
+Front end was built out using Javascript.
+
 
 #### *API Endpoints*
 
-http://localhost:8085/
+http://3.128.124.196:8080/WorkoutTracker/
 
 | Return Type         | Route                                 | Functionality                           |
 | ------------------- | ------------------------------------- | --------------------------------------- |
@@ -58,13 +60,17 @@ http://localhost:8085/
 ```
 
 #### *Technologies Used*
+* AJAX
 * AWS
 * CRUD
+* DOM Manipulation
 * Git/Github
 * Gradle
 * Hibernate
+* HTML
 * JSON
 * Java
+* JavaScript
 * JPA
 * JUnit testing
 * MAMP
@@ -88,3 +94,5 @@ Learned important annotations like:
 * @PostMapping
 * @PutMapping
 * @DeleteMapping
+
+Adding scripts to a web application, AJAX, XMLHttpRequest, and build HTML with JavaScript.
