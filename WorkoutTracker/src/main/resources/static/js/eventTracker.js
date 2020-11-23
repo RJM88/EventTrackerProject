@@ -162,7 +162,7 @@ function getWorkout(workoutId) {
         console.log(workout);
         displayWorkout(workout);
       } else {
-        console.error("Wokrout not found.");
+        console.error("Workout not found.");
         displayError("Workout not found.");
       }
     }
@@ -182,7 +182,7 @@ function listAllWorkouts() {
         console.log(workouts);
         workoutTable(workouts);
       } else {
-        console.error("Wokrout not found.");
+        console.error("Workout not found.");
         displayError("Workout not found.");
       }
     }
@@ -205,7 +205,7 @@ function deleteWorkout(workoutId) {
         var dataDiv = document.getElementById("workoutData");
         dataDiv.textContent = "Workout Was Deleted";
       } else {
-        console.error("Wokrout not found.");
+        console.error("Workout not found.");
         displayError("Workout not found.");
       }
     }
@@ -226,7 +226,7 @@ function getSearchedWorkout(keyword) {
         console.log(workouts);
         workoutTableByKeyword(workouts);
       } else {
-        console.error("Wokrout not found.");
+        console.error("Workout not found.");
         displayError("Workout not found.");
       }
     }
@@ -280,7 +280,12 @@ function updateWorkout(workout) {
     xhr.send(newUpdatedWorkout);
     console.log(workout.name);
     console.log(newUpdatedWorkout);
-  }function postWorkout(workout) {
+
+    
+  }
+  
+  
+  function postWorkout(workout) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "api/workouts");
   xhr.setRequestHeader("Content-type", "application/json");
@@ -347,7 +352,7 @@ function displayWorkout(workout) {
   workoutName.id = "name";
   workoutName.name = "name";
   workoutName.type = "text";
-  workoutName.textContent = workout.name;
+  workoutName.value = workout.name;
   updatedWorkoutForm.appendChild(workoutName);
 
   var workoutDescription = document.createElement("input");
