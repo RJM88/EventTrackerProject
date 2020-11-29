@@ -1,0 +1,178 @@
+
+  <!-- This section will display the selected workouts information -->
+  <div *ngIf="selected">
+    <h3>{{ selected.id }}: {{ selected.name }}</h3>
+    <img id="img" [src]="selected.img" alt="{{ selected.name }}" />
+    <ul>
+      <li>Description: {{ selected.description }}</li>
+      <li>Location: {{ selected.location }}</li>
+      <li>Day of Week: {{ selected.day }}</li>
+      <li>Date: {{ selected.date }}</li>
+      <li>Sets/Reps/Weight: {{ selected.weight }}</li>
+    </ul>
+    <button id="backButton" (click)="selected = null">Back to Workouts</button>
+    <input id="deleteButton" (click)="deleteWorkout(selected)" type="submit" value="Delete Workout" />
+    <p>
+      <button id="backButton"type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+        aria-controls="collapseExample">
+        Update This Workout
+      </button>
+      <br>
+    </p>
+    <!-- This is the form to update a workout. Can collapse and expand as watned by a click of a button -->
+    <br>
+    <div  id="addBody" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <div  id="addBody"class="card">
+        <div class="card-body">
+          <form id=""  *ngIf="selected" #updateWorkoutForm="ngForm">
+            <h4 >Update This Workout</h4>
+            <input type="hidden" id="id" name="id" [(ngModel)]="selected.id">
+            <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            [(ngModel)]="updateWorkout.name"
+            /><br>
+            <input
+            type="text"
+            name="description"
+            id="newDescription"
+            placeholder="Description"
+            [(ngModel)]="updateWorkout.description"
+            /><br />
+            <input
+            type="text"
+            name="location"
+            id="newLocation"
+            placeholder="Location"
+            [(ngModel)]="updateWorkout.location"
+            /><br />
+            <input
+            type="text"
+            name="day"
+            id="newDay"
+            placeholder="Day"
+            [(ngModel)]="updateWorkout.day"
+            /><br />
+            <input
+            type="text"
+            name="date"
+            id="newDate"
+            placeholder="Date"
+            [(ngModel)]="updateWorkout.date"
+            /><br />
+            <input
+            type="text"
+            name="img"
+            id="newImg"
+            placeholder="Img"
+            [(ngModel)]="updateWorkout.img"
+            /><br />
+            <input
+            type="text"
+            name="weight"
+            id="newWeight"
+            placeholder="Weight"
+            [(ngModel)]="updateWorkout.weight"
+            /><br />
+            <input (click)="workoutUpdate(updateWorkoutForm)" (click)="select = null" type="submit" value="Update" />
+          </form>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- This is the list/history of workouts -->
+  <div *ngIf="!selected">
+
+    <h4 id="workoutHeader">Workout History</h4>
+    <table class="center">
+      <thead>
+        <tr>
+          <td id="header" >id</td>
+          <br />
+          <td id="header" >name</td>
+          <br />
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let workout of workouts" (click)="selected = workout">
+          <td style="text-align: center">{{ workout.id }}</td>
+          <br />
+          <td style="text-align: center">{{ workout.name }}</td>
+
+           <td> <img id="img" [src]="workout.img" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Number of workouts: {{workouts.length}}</p>
+</div>
+
+    <!-- This is the form to add a new workout. Can collapse and expand as watned by a click of a button -->
+<p>
+  <button *ngIf="!selected" id="addButton" type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample">
+    Add a New Workout
+  </button>
+</p>
+<div id="addBody" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+  <div id="addBody" class="card">
+    <div id="addBody" class="card-body">
+      <div id="" style="text-align: center">
+        <form id=""  *ngIf="!selected" #addNewWorkout="ngForm">
+          <h4>Add a New Workout</h4>
+          <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          [(ngModel)]="newWorkout.name"
+          /><br />
+          <input
+          type="text"
+          name="description"
+          id="newDescription"
+          placeholder="Description"
+          [(ngModel)]="newWorkout.description"
+          /><br />
+          <input
+          type="text"
+          name="location"
+          id="newLocation"
+          placeholder="Location"
+          [(ngModel)]="newWorkout.location"
+          /><br />
+          <input
+          type="text"
+          name="day"
+          id="newDay"
+          placeholder="Day"
+          [(ngModel)]="newWorkout.day"
+          /><br />
+          <input
+          type="text"
+          name="date"
+          id="newDate"
+          placeholder="Date"
+          [(ngModel)]="newWorkout.date"
+          /><br />
+          <input
+          type="text"
+          name="img"
+          id="newImg"
+          placeholder="Img"
+          [(ngModel)]="newWorkout.img"
+          /><br />
+          <input
+          type="text"
+          name="weight"
+          id="newWeight"
+          placeholder="Weight"
+          [(ngModel)]="newWorkout.weight"
+          /><br />
+          <input (click)="addWorkout(addNewWorkout)" type="submit" value="Add Item" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

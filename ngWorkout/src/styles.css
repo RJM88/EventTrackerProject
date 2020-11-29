@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  /* background-color: lightgray; */
+}
+#addBody {
+  background-color: lightgray;
+  text-align: center;
+  border: 5px solid #555;
+
+}
+h4 {
+  text-decoration: underline;
+  text-align: center;
+}
+li{
+  color: rgb(35, 8, 215);
+
+}
+h4,
+p,
+td {
+  color: rgb(35, 8, 215);
+  text-align: center;
+}
+#workoutHeader{
+  font-size: 45px;
+
+}
+td{
+  padding: 30px;
+}
+#header{
+  color: rgb(35, 8, 215);
+  text-align: center;
+  text-decoration: underline;
+  font-size: 25px;
+}
+img {
+  border: 5px solid #555;
+  border-radius: 20px;
+  padding: 1px;
+  height: 150px;
+  width: 200px;
+}
+#img {
+  border: 5px solid rgb(35, 8, 215);
+  border-radius: 20px;
+  padding: 1px;
+  margin-left: 20px;
+
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+#updateBody {
+  text-align: center;
+ }
+#addButton{
+  margin-left: 40%;
+  margin-right: 40%;
+  border: none;
+
+}
+#updateBodyForm{
+  margin-left: 20%;
+  margin-right: 40%;
+}
+#deleteButton, #backButton,#addButton{
+  background-color: red; /* Green */
+  color: white;
+
+}
