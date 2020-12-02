@@ -70,6 +70,7 @@ export class WorkoutService {
     };
     return this.http.delete<any>(this.url +'/'+ id, httpOptions)
   }
+
   handleError(error: any) {
     console.error('Something Broke');
     return throwError(error.json().error || 'Server Error');

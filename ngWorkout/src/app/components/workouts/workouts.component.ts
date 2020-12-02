@@ -18,7 +18,18 @@ export class WorkoutsComponent implements OnInit {
   updateWorkout =  new Workout();
   newWorkout = new Workout();
   public isCollapsed = false;
-
+  public updateIsCollapsed = false;
+  selectedType = 'all';
+  days = [
+    'all',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
+  ];
   ngOnInit(): void {
     this.loadWorkout();
   }

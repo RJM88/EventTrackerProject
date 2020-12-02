@@ -1,37 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  /* border-top: 40px solid #007BFF; */
+  font-size: 20px;
 
-body {
-  /* background-color: lightgray; */
+}
+#titleSelected{
+  margin-left: 6px;
+  color:white;
+  font-size: 45px;
+
+}
+#addButton{
+  color:#007BFF!important;
+  background-color: white;
+  width: 242px;
+
+  margin-right:10px;
+  float:left;
+}
+#updateButton{
+  color:#007BFF!important;
+  background-color: white;
+  width: 242px;
+
+  margin-right:10px;
+  float:left;
+}
+#navBar{
+ background:#007BFF !important;
+ min-height: 80px;
+}
+#dropDown{
+  color:white;
+
+}
+#title{
+  margin-left: auto!important;
+  margin-right: auto!important;
+  text-align: center;
+  color:white;
+  font-size: 45px;
+
 }
 #addBody {
   background-color: lightgray;
-  text-align: center;
+  text-align: center!important;
   border: 5px solid #555;
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 300px;
+
+}
+#updateBody{
+  background-color: lightgray;
+  border: 5px solid #555;
+  float: left !important;
+  width: 300px;
+  margin-right: 1000px!important;
+
 
 }
 h4 {
   text-decoration: underline;
   text-align: center;
 }
+h3,
 li{
-  color: rgb(35, 8, 215);
+  color:#007BFF;
 
 }
 h4,
 p,
 td {
-  color: rgb(35, 8, 215);
+  color: #007BFF;
+  /* color: rgb(35, 8, 215); */
   text-align: center;
 }
 #workoutHeader{
-  font-size: 45px;
+  font-size: 30px;
 
 }
 td{
-  padding: 30px;
+  padding: 15px;
 }
 #header{
-  color: rgb(35, 8, 215);
+  color: #007BFF;
   text-align: center;
   text-decoration: underline;
   font-size: 25px;
@@ -44,7 +97,7 @@ img {
   width: 200px;
 }
 #img {
-  border: 5px solid rgb(35, 8, 215);
+  border: 5px solid #007BFF;
   border-radius: 20px;
   padding: 1px;
   margin-left: 20px;
@@ -54,21 +107,25 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-#updateBody {
+/* #updateBody {
   text-align: center;
- }
-#addButton{
-  margin-left: 40%;
-  margin-right: 40%;
-  border: none;
+ } */
 
-}
 #updateBodyForm{
-  margin-left: 20%;
-  margin-right: 40%;
+ float: left;
 }
-#deleteButton, #backButton,#addButton{
-  background-color: red; /* Green */
-  color: white;
+#selectedBody{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#selectedList{
+  display: inline-block;
+  text-align: center;
+  list-style-type: none;
+  font-size: 20px;
 
+}
+#backButton, h3{
+  margin-left: 20px;
 }

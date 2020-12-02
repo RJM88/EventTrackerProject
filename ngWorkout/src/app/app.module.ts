@@ -7,12 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
+import { WorkoutDatePipe } from './pipes/workout-date.pipe';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, WorkoutsComponent],
+  declarations: [AppComponent, WorkoutsComponent, WorkoutDatePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
