@@ -61,6 +61,7 @@ http://3.128.124.196:8080/WorkoutTracker/
 
 #### *Technologies Used*
 * AJAX
+* Angular
 * AWS
 * CRUD
 * DOM Manipulation
@@ -95,4 +96,4 @@ Learned important annotations like:
 * @PutMapping
 * @DeleteMapping
 
-Adding scripts to a web application, AJAX, XMLHttpRequest, and build HTML with JavaScript.
+Adding scripts to a web application, AJAX, XMLHttpRequest, and build HTML with JavaScript and Angular.
