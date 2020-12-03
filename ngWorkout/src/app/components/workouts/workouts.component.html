@@ -1,146 +1,289 @@
-<nav id="navBar" class="navbar navbar-light bg-light">
-  <div *ngIf="!selected">
+<nav id="navBar" class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" id='brand' (click)="selected = null"> Workout Tracker </a>
 
-    <span id="dropDown"
-      >Select a day:
-      <select [(ngModel)]="selectedType">
-        <option *ngFor="let day of days" (click)="selectedType = day">
-          {{ day }}
-        </option>
-      </select>
-    </span>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
 
-    <p>
-      <button
-      *ngIf="!selected" id="addButton" type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
-      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" >
-      Add a New Workout</button>
-    </p>
-    <a id="title">Workout Tracker</a>
+    <div id="navBar" *ngIf="!selected" class="row">
+      <div id="navBar" class="col">
+        <div
+          #collapse="ngbCollapse"
+          [(ngbCollapse)]="updateIsCollapsed"
+          id="navbarDropdown"
+          ngbDropdown
+          class="d-inline-block"
+        >
+          <a
+            id="navBar"
+            (click)="updateIsCollapsed = !updateIsCollapsed"
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ngbDropdownToggle
+            >Add New Workout</a
+          >
 
-    <div id="" #collapse="ngbCollapse" [(ngbCollapse)]="!isCollapsed">
-      <div id="" style="text-align: center">
-        <form id="addBody" *ngIf="!selected" #addNewWorkout="ngForm">
-          <h4>Add a New Workout</h4>
-          <input type="text" name="name" placeholder="Name" [(ngModel)]="newWorkout.name"
-          /><br /><br />
-          <textarea [(ngModel)]="newWorkout.description" name="description" cols="19" rows="5"
-            type="text" id="newDescription" placeholder="Description" ></textarea><br /><br />
-          <input type="text" name="location" id="newLocation" placeholder="Location" [(ngModel)]="newWorkout.location"/><br /><br />
-          <input type="text" name="day" id="newDay" placeholder="Day" [(ngModel)]="newWorkout.day" /><br /><br />
-          <input type="text" name="date" id="newDate" placeholder="Date" [(ngModel)]="newWorkout.date"/><br /><br />
-          <input type="text" name="img" id="newImg" placeholder="Img" [(ngModel)]="newWorkout.img"/><br /><br />
-          <textarea [(ngModel)]="newWorkout.weight" name="weight" id="newWeight" cols="19" rows="5"
-            type="text" id="newDescription" placeholder="Weight" ></textarea><br /><br />
-          <input (click)="addWorkout(addNewWorkout)" (click)="isCollapsed = !isCollapsed" (click)="selected = null"
-            class="btn btn-outline-primary" type="submit" value="Add Workout" /> <br /> <br />
-        </form>
+            <form id="addBody" *ngIf="!selected" #addNewWorkout="ngForm" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <h4 id="dropDownTitle">Add Workout</h4>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                [(ngModel)]="newWorkout.name"
+              /><br /><br />
+              <textarea
+                [(ngModel)]="newWorkout.description"
+                name="description"
+                cols="19"
+                rows="5"
+                type="text"
+                id="newDescription"
+                placeholder="Description"
+              ></textarea
+              ><br /><br />
+              <input
+                type="text"
+                name="location"
+                id="newLocation"
+                placeholder="Location"
+                [(ngModel)]="newWorkout.location"
+              /><br /><br />
+              <input
+                type="text"
+                name="day"
+                id="newDay"
+                placeholder="Day"
+                [(ngModel)]="newWorkout.day"
+              /><br /><br />
+              <input
+                type="text"
+                name="date"
+                id="newDate"
+                placeholder="Date"
+                [(ngModel)]="newWorkout.date"
+              /><br /><br />
+              <input
+                type="text"
+                name="img"
+                id="newImg"
+                placeholder="Img"
+                [(ngModel)]="newWorkout.img"
+              /><br /><br />
+              <textarea
+                [(ngModel)]="newWorkout.weight"
+                name="weight"
+                id="newWeight"
+                cols="19"
+                rows="5"
+                type="text"
+                id="newDescription"
+                placeholder="Weight"
+              ></textarea
+              ><br /><br />
+              <input
+                (click)="addWorkout(addNewWorkout)"
+                (click)="isCollapsed = !isCollapsed"
+                (click)="selected = null"
+                class="btn btn-outline-primary"
+                type="submit"
+                value="Add Workout"
+              />
+              <br />
+              <br />
+            </form>
+
+        </div>
       </div>
     </div>
-  </div>
 
-
-  <div id="titleSelected" *ngIf="selected">
-    <p>    <button id="updateButton" type="button" class="btn btn-outline-primary" (click)="updateIsCollapsed = !updateIsCollapsed"
-      [attr.aria-expanded]="updateIsCollapsed" aria-controls="collapseExample"> Update This Workout</button></p>
-      <a> Workout Tracker</a>
-
-    </div>
-          <span>
-    <div
-    *ngIf="selected"
-    id="updateBody"
-    #collapse="ngbCollapse"
-    [(ngbCollapse)]="!updateIsCollapsed"
-  > <div id="" style="text-align: center">
-    <form *ngIf="selected" #updateWorkoutForm="ngForm">
-      <h4>Update This Workout</h4>
-      <input type="hidden" id="id" name="id" [(ngModel)]="selected.id" />
-      <input type="text" name="name" placeholder="Name" [(ngModel)]="updateWorkout.name"/><br /><br />
-      <textarea [(ngModel)]="updateWorkout.description" name="description" cols="19" rows="5" type="text"
-      id="newDescription" placeholder="Description"></textarea><br /><br />
-      <input type="text" name="location" id="newLocation" placeholder="Location"
-        [(ngModel)]="updateWorkout.location"/><br /><br />
-      <input type="text" name="day" id="newDay" placeholder="Day" [(ngModel)]="updateWorkout.day"/><br /><br />
-      <input type="text" name="date" id="newDate" placeholder="Date" [(ngModel)]="updateWorkout.date"/><br /><br />
-      <input type="text" name="img" id="newImg" placeholder="Img" [(ngModel)]="updateWorkout.img"/><br /><br />
-      <textarea [(ngModel)]="updateWorkout.weight" name="weight" id="newWeight" cols="19" rows="5"
-      type="text" id="newDescription" placeholder="Weight"></textarea><br /><br />
-      <input (click)="workoutUpdate(updateWorkoutForm)" (click)="selected = null"
-      class="btn btn-outline-primary" type="submit" value="Update"/><br /><br />
+    <form id="navBar" *ngIf="!selected">
+      <div id="navBar" class="row">
+        <div id="navBar" class="col">
+          <div
+            [(ngModel)]="selectedType"
+            id="navbarDropdown"
+            ngbDropdown
+            class="d-inline-block"
+          >
+            <a
+              id="navBar"
+              class="nav-link dropdown-toggle"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ngbDropdownToggle
+              >Select Day</a
+            >
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <option *ngFor="let day of days" (click)="selectedType = day">
+                {{ day }}
+              </option>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
+
+    <div  id="navBar" *ngIf="selected" class="row">
+      <div id="navBar" class="col">
+        <div
+          #collapse="ngbCollapse"
+          [(ngbCollapse)]="updateIsCollapsed"
+
+          ngbDropdown
+          class="d-inline-block"
+        >
+          <a style="margin-right: 90px"
+            id="navBar"
+            (click)="updateIsCollapsed = !updateIsCollapsed"
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ngbDropdownToggle
+            >Update Workout</a
+          >
+
+            <form ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-right: 100px" id="addBody" #updateWorkoutForm="ngForm">
+              <h4 id="dropDownTitle">Update This Workout</h4>
+              <input
+                type="hidden"
+                id="id"
+                name="id"
+                [(ngModel)]="selected.id"
+              />
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                [(ngModel)]="updateWorkout.name"
+              /><br /><br />
+              <textarea
+                [(ngModel)]="updateWorkout.description"
+                name="description"
+                cols="19"
+                rows="5"
+                type="text"
+                id="newDescription"
+                placeholder="Description"
+              ></textarea
+              ><br /><br />
+              <input
+                type="text"
+                name="location"
+                id="newLocation"
+                placeholder="Location"
+                [(ngModel)]="updateWorkout.location"
+              /><br /><br />
+              <input
+                type="text"
+                name="day"
+                id="newDay"
+                placeholder="Day"
+                [(ngModel)]="updateWorkout.day"
+              /><br /><br />
+              <input
+                type="text"
+                name="date"
+                id="newDate"
+                placeholder="Date"
+                [(ngModel)]="updateWorkout.date"
+              /><br /><br />
+              <input
+                type="text"
+                name="img"
+                id="newImg"
+                placeholder="Img"
+                [(ngModel)]="updateWorkout.img"
+              /><br /><br />
+              <textarea
+                [(ngModel)]="updateWorkout.weight"
+                name="weight"
+                id="newWeight"
+                cols="19"
+                rows="5"
+                type="text"
+                id="newDescription"
+                placeholder="Weight"
+              ></textarea
+              ><br /><br />
+              <input
+                (click)="workoutUpdate(updateWorkoutForm)"
+                (click)="selected = null"
+                class="btn btn-outline-primary"
+                type="submit"
+                value="Update"
+              /><br /><br />
+            </form>
+          </div>
+          <div><form></form></div>
+        </div>
+      </div>
+
   </div>
-
-</div>
-</span>
 </nav>
-
 <!-- This section will display the selected workouts information -->
 <div id="selectedBody" *ngIf="selected">
   <h3>{{ selected.id }}: {{ selected.name }}</h3>
   <img id="img" [src]="selected.img" alt="{{ selected.name }}" />
   <ul>
     <div id="selectedList">
-    <li>Description: {{ selected.description }}</li><br>
-    <li>Location: {{ selected.location }}</li><br>
-    <li>Day of Week: {{ selected.day }}</li><br>
-    <li>Date: {{ selected.date }}</li><br>
-    <li>Sets/Reps/Weight: {{ selected.weight }}</li>
-  </div>
+      <li>Description: {{ selected.description }}</li>
+      <br />
+      <li>Location: {{ selected.location }}</li>
+      <br />
+      <li>Day of Week: {{ selected.day }}</li>
+      <br />
+      <li>Date: {{ selected.date }}</li>
+      <br />
+      <li>Sets/Reps/Weight: {{ selected.weight }}</li>
+    </div>
   </ul>
-  <button id="backButton" class="btn btn-outline-primary" (click)="selected = null">Back to Workouts</button>
 
-  <input id="deleteButton" class="btn btn-outline-primary"(click)="deleteWorkout(selected)"
-    (click)="selected = null" type="submit" value="Delete Workout"/>
-
-  <!-- <button id="updateButton" type="button" class="btn btn-outline-primary" (click)="updateIsCollapsed = !updateIsCollapsed" -->
-    <!-- [attr.aria-expanded]="updateIsCollapsed" aria-controls="collapseExample"> Update This Workout</button><br /> -->
-
-  <!-- This is the form to update a workout. Can collapse and expand as watned by a click of a button -->
+  <input
+    id="deleteButton"
+    class="btn btn-outline-primary"
+    (click)="deleteWorkout(selected)"
+    (click)="selected = null"
+    type="submit"
+    value="Delete Workout"
+  />
   <br />
-  <!-- <div
-    id="updateBody"
-    #collapse="ngbCollapse"
-    [(ngbCollapse)]="!updateIsCollapsed"
-  >
-    <form *ngIf="selected" #updateWorkoutForm="ngForm">
-      <h4>Update This Workout</h4>
-      <input type="hidden" id="id" name="id" [(ngModel)]="selected.id" />
-      <input type="text" name="name" placeholder="Name" [(ngModel)]="updateWorkout.name"/><br /><br />
-      <textarea [(ngModel)]="updateWorkout.description" name="description" cols="19" rows="5" type="text"
-      id="newDescription" placeholder="Description"></textarea><br /><br />
-      <input type="text" name="location" id="newLocation" placeholder="Location"
-        [(ngModel)]="updateWorkout.location"/><br /><br />
-      <input type="text" name="day" id="newDay" placeholder="Day" [(ngModel)]="updateWorkout.day"/><br /><br />
-      <input type="text" name="date" id="newDate" placeholder="Date" [(ngModel)]="updateWorkout.date"/><br /><br />
-      <input type="text" name="img" id="newImg" placeholder="Img" [(ngModel)]="updateWorkout.img"/><br /><br />
-      <textarea [(ngModel)]="updateWorkout.weight" name="weight" id="newWeight" cols="19" rows="5"
-      type="text" id="newDescription" placeholder="Weight"></textarea><br /><br />
-      <input (click)="workoutUpdate(updateWorkoutForm)" (click)="selected = null"
-      class="btn btn-outline-primary" type="submit" value="Update"/><br /><br />
-    </form>
-  </div> -->
 </div>
 
 <!-- This is the list/history of workouts -->
 <div *ngIf="!selected">
-  <h4 id="workoutHeader">History</h4>
+  <!-- <h4 style="float: left" id="workoutHeader">History</h4> -->
   <table class="center">
     <thead>
-      <tr><td id="header">ID</td><br />
-        <td id="header">Workout Name</td><br />
-        <td id="header">Date</td><br /></tr>
+      <tr>
+        <td id="header">ID.</td>
+
+        <td id="header">Workout Name</td>
+
+        <td id="header">Date</td>
+      </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let workout of workouts | workoutDate: selectedType" (click)="selected = workout">
-        <td id="homeList" style="text-align: center">{{ workout.id }}</td><br />
-        <td id="homeList" style="text-align: center">{{ workout.name }}</td><br />
+      <tr id="homeRow"
+        *ngFor="let workout of workouts | workoutDate: selectedType"
+        (click)="selected = workout"
+      >
+        <td id="homeList" style="text-align: center">{{ workout.id }}.</td>
+
+        <td id="homeList" style="text-align: center">{{ workout.name }}</td>
+
         <td id="homeList" style="text-align: center">{{ workout.date }}</td>
       </tr>
     </tbody>
   </table>
   <p>Number of workouts: {{ workouts.length }}</p>
 </div>
-
-<!-- This is the form to add a new workout. Can collapse and expand as watned by a click of a button -->

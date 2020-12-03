@@ -9,7 +9,6 @@ import { Workout } from './../models/workout';
 @Injectable({
   providedIn: 'root',
 })
-
 export class WorkoutService {
   constructor(private http: HttpClient) {}
   baseUrl = 'http://localhost:8085/';
@@ -35,40 +34,41 @@ export class WorkoutService {
     console.log(workout);
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token',
+      }),
     };
     this.workouts.push(workout);
     // this.http.post('/api/workouts')
-    return this.http.post<any>(this.url, workout, httpOptions)
-    .pipe(catchError(this.handleError));
+    return this.http
+      .post<any>(this.url, workout, httpOptions)
+      .pipe(catchError(this.handleError));
   }
   update(workout: Workout) {
-  // update(id: number, workout: Workout) {
+    // update(id: number, workout: Workout) {
     console.log(workout);
 
     console.log(workout.id);
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token',
+      }),
     };
     // this.http.post('/api/workouts')
-    return this.http.put<any>(this.url +'/'+ workout.id, workout, httpOptions)
-    .pipe(catchError(this.handleError));
+    return this.http
+      .put<any>(this.url + '/' + workout.id, workout, httpOptions)
+      .pipe(catchError(this.handleError));
   }
-
 
   destroy(id: number) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token',
+      }),
     };
-    return this.http.delete<any>(this.url +'/'+ id, httpOptions)
+    return this.http.delete<any>(this.url + '/' + id, httpOptions);
   }
 
   handleError(error: any) {

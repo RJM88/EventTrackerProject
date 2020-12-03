@@ -15,7 +15,7 @@ export class WorkoutsComponent implements OnInit {
   selectedAdd: Workout = null;
   title = 'ngWorkout';
   display = true;
-  updateWorkout =  new Workout();
+  updateWorkout = new Workout();
   newWorkout = new Workout();
   public isCollapsed = false;
   public updateIsCollapsed = false;
@@ -28,7 +28,7 @@ export class WorkoutsComponent implements OnInit {
     'Thursday',
     'Friday',
     'Saturday',
-    'Sunday'
+    'Sunday',
   ];
   ngOnInit(): void {
     this.loadWorkout();
@@ -70,7 +70,7 @@ export class WorkoutsComponent implements OnInit {
     console.log(updateWorkoutForm.value);
     // console.log(updateWorkout.value);
     this.workoutServ.update(updateWorkoutForm.value).subscribe(
-    // this.workoutServ.update(updateWorkoutForm.value.id, updateWorkoutForm.value).subscribe(
+      // this.workoutServ.update(updateWorkoutForm.value.id, updateWorkoutForm.value).subscribe(
       (data) => {
         this.loadWorkout();
       },
