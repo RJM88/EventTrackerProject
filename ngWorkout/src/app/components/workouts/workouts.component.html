@@ -29,7 +29,7 @@
             >Add New Workout</a
           >
 
-            <form id="addBody" *ngIf="!selected" #addNewWorkout="ngForm" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <form class="dropdown-menu dropdown-menu-right" id="addBody" *ngIf="!selected" #addNewWorkout="ngForm" ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <h4 id="dropDownTitle">Add Workout</h4>
               <input
                 type="text"
@@ -140,7 +140,7 @@
           ngbDropdown
           class="d-inline-block"
         >
-          <a style="margin-right: 90px"
+          <a
             id="navBar"
             (click)="updateIsCollapsed = !updateIsCollapsed"
             class="nav-link dropdown-toggle"
@@ -152,8 +152,10 @@
             >Update Workout</a
           >
 
-            <form ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-right: 100px" id="addBody" #updateWorkoutForm="ngForm">
-              <h4 id="dropDownTitle">Update This Workout</h4>
+
+          <form class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-right: 100px" id="addBody" #updateWorkoutForm="ngForm">
+
+            <h4 id="dropDownTitle">Update This Workout</h4>
               <input
                 type="hidden"
                 id="id"
